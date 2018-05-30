@@ -4,13 +4,14 @@
 import {Component} from "@angular/core";
 import {NavController, AlertController, NavParams, Platform} from "ionic-angular";
 import {Network} from "@ionic-native/network";
+import {Repair} from "../../common/model/Repair";
 
 @Component({
   selector:'repair-detail-page',
   templateUrl:'repair.detail.html'
 })
 export class RepairDetailPage  {
-  repair : any;
+  repair : Repair;
 
 
   constructor(protected navCtrl: NavController, protected alertCtrl: AlertController,
@@ -21,7 +22,4 @@ export class RepairDetailPage  {
     this.repair = this.navParams.get('repair');
   }
 
-  getTaskInfo() {
-
-  }
 }

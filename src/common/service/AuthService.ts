@@ -27,20 +27,19 @@ export class AuthService {
               public events : Events,
               // private message : NoticeService,
               private storage : Storage){
-    console.log('Hello AuthProvider Provider');
   }
   public login(credentials): Observable<any> {
     if (credentials.name === null || credentials.password === null) {
       return Observable.throw("请输入用户名和密码");
     } else {
-      console.log('sending login request');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       let options = new RequestOptions({headers: headers});
       return this.http.post(url+ "/login", JSON.stringify(credentials), options)
         .map((res)=>{
           console.log('get token from server ::: ' + JSON.stringify(res.json().token));
-          localStorage.setItem("token", res.json().token)
+          localStorage.setItem("token", res.json().token);
+          localStorage.setItem("sno", credentials.name);
           this.storage.set('token', res.json().token).then((o)=>{
             this.currentUser = new User(credentials.userid, credentials.passwd);
             this.events.publish('user:login')

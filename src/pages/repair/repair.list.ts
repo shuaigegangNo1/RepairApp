@@ -6,6 +6,7 @@ import {Repair, RepairCriteria} from "../../common/model/Repair";
 import {RepairDetailPage} from "./repair.detail";
 import {UserService} from "../../common/service/userService";
 import {RepairService} from "../../common/service/repairService";
+import {RepairCreatePage} from "./repair.create";
 
 /**
  * Generated class for the RiskCategoryListTestPage page.
@@ -30,6 +31,9 @@ export class RepairListPage implements AfterViewInit{
               private _messageService: UIMessageService,
               private userService: UserService,
               private repairService: RepairService) {
+    if(JSON.parse(localStorage.getItem('sno'))){
+      this.repairCriteria.sno = JSON.parse(localStorage.getItem('sno'));
+    }
   }
 
   // ionViewDidLoad() {
@@ -48,12 +52,14 @@ export class RepairListPage implements AfterViewInit{
       repair: repair,
     });
   }
-
+  JumpToCreateRepair() {
+    this.navCtrl.push(RepairCreatePage);
+  }
   getUserListByRole() {
     this.userService.getUserListByRole(2).subscribe(res=> console.log("res======", JSON.stringify(res)))
   }
   getRepairList() {
-    this.repairCriteria.sno = "666";
+    // this.repairCriteria.sno = "666";
     this.repairService.getRepairList(this.repairCriteria).subscribe(res=> {
       this.repairList = res.result.content
       this.totalRecords = res.result.totalElements

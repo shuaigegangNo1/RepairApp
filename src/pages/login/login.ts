@@ -10,28 +10,8 @@ import {AuthService} from "../../common/service/AuthService";
   templateUrl: 'login.html'
 })
 export class loginPage{
-  // name: string;
-  // passWord: string;
-  // constructor(public navCtrl: NavController, public alertCtrl: AlertController){
-  // }
-  // login(){
-  //   this.navCtrl.push(TabsPage,{loginFlag: true});
-  //   /*    if(this.name ==='admin' && this.passWord === '123'){
-  //    this.navCtrl.push(IndexComponent,{loginFlag: true});
-  //    }else{
-  //    let alert = this.alertCtrl.create(
-  //    {
-  //    title: '登录失败',
-  //    subTitle: '用户名和密码不一致',
-  //    buttons: ['确认']
-  //    });
-  //    alert.present();
-  //    }*/
-  // }
   user = { name: '', password: '' };
-
   constructor(public nav: NavController, public auth: AuthService, public alertCtrl: AlertController) { }
-
   public login() {
     this.auth.login(this.user).subscribe(allowed => {
         if (allowed) {

@@ -3,11 +3,13 @@ import { IonicPageModule } from 'ionic-angular';
 import {RepairListPage} from './repair.list';
 import {RepairDetailPage} from "./repair.detail";
 import {PipesModule} from "../../common/pipe/pipe.module";
+import {RepairCreatePage} from "./repair.create";
 
 @NgModule({
   declarations: [
     RepairListPage,
-    RepairDetailPage
+    RepairDetailPage,
+    RepairCreatePage
   ],
   imports: [
     IonicPageModule.forChild(RepairListPage),
@@ -15,10 +17,12 @@ import {PipesModule} from "../../common/pipe/pipe.module";
   ],
   exports: [
     RepairListPage,
-    RepairDetailPage
+    RepairDetailPage,
+    RepairCreatePage
   ],
   entryComponents: [
-    RepairDetailPage
+    RepairDetailPage,
+    RepairCreatePage
 
   ]
 })

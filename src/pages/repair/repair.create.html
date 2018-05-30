@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            报修申报
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div style="margin-top:10%">
+
+        <ion-list style="margin-top:10%">
+            <ion-item>
+                <ion-label floating> 报修内容描述<span style="color:red; font-size: 20px;">*</span></ion-label>
+                <ion-textarea type="password" [(ngModel)]="repair.content"></ion-textarea>
+            </ion-item>
+            <ion-item>
+                <ion-label>区域<span style="color:red; font-size: 20px;">*</span></ion-label>
+                <ion-select [(ngModel)]="repair.area" okText="确认" cancelText="取消" placeholder="请选择区域">
+                    <ion-option value="0">公寓区</ion-option>
+                    <ion-option value="1">教学区</ion-option>
+                    <ion-option value="2">办公场所(室内公共设施)</ion-option>
+                    <ion-option value="3">室外公共设施</ion-option>
+                    <ion-option value="4">绿化卫生</ion-option>
+                    <ion-option value="5">食堂</ion-option>
+                    <ion-option value="6">其他</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label floating> 详细地址<span style="color:red; font-size: 20px;">*</span></ion-label>
+                <ion-input type="text" [(ngModel)]="repair.address"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating> 联系方式<span style="color:red; font-size: 20px;">*</span></ion-label>
+                <ion-input type="text" [(ngModel)]="repair.telephone"></ion-input>
+            </ion-item>
+        </ion-list>
+        <div padding>
+            <button ion-button full (click)="createRepair()">提交</button>
+        </div>
+    </div>
+</ion-content>
+
