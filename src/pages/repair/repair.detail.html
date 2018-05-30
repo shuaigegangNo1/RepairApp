@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>报修详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!--基本信息模块-->
+  <ion-list>
+    <ion-list-header>
+      <ion-icon name="md-list-box" style="color: lightseagreen"></ion-icon>&nbsp;
+      基本信息
+    </ion-list-header>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon name="ios-cube-outline" style="color: lightblue; font-size: 200%"></ion-icon>
+        </ion-avatar>
+        <h3>
+          <ion-row>
+            <ion-col col-11 style="overflow: hidden;white-space: normal">
+              <b>报修单号:&nbsp; </b>{{repair.id}}
+
+            </ion-col>
+          </ion-row>
+        </h3>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon name="ios-cube-outline" style="color: lightblue; font-size: 200%"></ion-icon>
+        </ion-avatar>
+        <h3>
+          <ion-row>
+            <ion-col col-11 style="overflow: hidden;white-space: normal">
+              <b>报修状态:&nbsp; </b>{{repair.repair_status| repairStatus}}
+
+            </ion-col>
+          </ion-row>
+        </h3>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon name="ios-pin-outline" style="color: lightblue; font-size: 200%"></ion-icon>
+        </ion-avatar>
+        <h3>
+          <ion-row>
+            <ion-col col-11 style="overflow: hidden;white-space: normal">
+              <b>报修地址:&nbsp; </b> {{repair.address}}
+            </ion-col>
+            <!--<ion-col style="color: #8e9093" col-1>-->
+            <!--<ion-icon name="ios-arrow-forward"></ion-icon>-->
+            <!--</ion-col>-->
+          </ion-row>
+        </h3>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon name="ios-time" class="company-icon"></ion-icon>
+        </ion-avatar>
+        <h3>
+          <ion-col>
+            <b>报修时间:&nbsp; </b> {{repair.create_time| date: 'yyyy-MM-dd HH:mm:ss'}}
+          </ion-col>
+        </h3>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

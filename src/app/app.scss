@@ -1,0 +1,80 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+/**
+.debug-border {
+    border : 1px dashed #e7e7e7;
+}
+.debug-border ion-row {
+    border : 1px dashed #e7e7e7;
+}
+.debug-border ion-col {
+    border : 1px dashed #e7e7e7;
+}
+**/
+
+.stove-color-important {
+  color: #FD8A8E
+}
+h2.stove-text-large {
+  font-size: 24px;
+}
+
+.stove-large ion-label{
+  font-size: 20px;
+}
+.stove-large ion-icon{
+  font-size: 30px;
+}
+.stove-large ion-badge{
+  font-size: 20px;
+}
+.stove-center{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.stove-item-horizontal .item-inner{
+  border-bottom: none !important;
+}
+.stove-items-horizontal ion-col:not(:last-child){
+  border-right: solid 2px #dedede;
+}
+.stove-list-header ion-label{
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+.stove-list-header .item-inner{
+  border-bottom: 3px solid #dedede !important;
+}
+.stove-list-header  ion-col:not(:last-child){
+  //text-align: center;
+  //border-right: solid 2px #dedede !important;
+}
+
+ion-card-header {
+  color: map-get($colors, primary) !important;
+}
+ion-note.time {
+  font-size: 12px;
+  align-self: flex-start;
+  margin-top: 14px;
+}
+
+ion-card img {
+  height:100%;
+  width:100%;
+}
