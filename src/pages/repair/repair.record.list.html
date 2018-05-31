@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>维修记录详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+        <ion-list>
+          <ion-item *ngFor="let repairRecord of repairRecordList">
+            <p>维修时间：{{repairRecord.create_time |date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+            <p>维修进展：{{repairRecord.repair_progress}}</p>
+          </ion-item>
+        </ion-list>
+        <ion-list *ngIf="show">
+            <ion-item>
+                暂无记录
+            </ion-item>
+        </ion-list>
+</ion-content>

@@ -5,18 +5,21 @@
 import { NgModule } from '@angular/core';
 import {AreaPipe} from "./area.pipe";
 import {RepairStatusPipe} from "./repairStatus.pipe";
+import {RolePipe} from "./role.pipe";
 
 
 @NgModule({
   declarations: [
     AreaPipe,
-    RepairStatusPipe
+    RepairStatusPipe,
+    RolePipe
   ],
   imports: [
   ],
   exports: [
     AreaPipe,
-    RepairStatusPipe
+    RepairStatusPipe,
+    RolePipe
   ]
 })
 export class PipesModule { }

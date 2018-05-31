@@ -26,6 +26,8 @@ import {RepairPageModule} from "../pages/repair/repair.list.module";
 import {UserService} from "../common/service/userService";
 import {RepairService} from "../common/service/repairService";
 import {AuthService} from "../common/service/AuthService";
+import {PipesModule} from "../common/pipe/pipe.module";
+import {RepairRecordService} from "../common/service/repairRecordService";
 export function getAuthHttp (http : Http, storage: Storage, message: UIMessageService, events: Events) {
   return new CustomAuthHttp(new AuthConfig({
     headerPrefix: "Bearer ",
@@ -53,7 +55,8 @@ export function getEnv (){
     IonicModule.forRoot(WindbellApp),
     IonicStorageModule.forRoot(),
     HttpClientModule,
-    RepairPageModule
+    RepairPageModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -84,7 +87,8 @@ export function getEnv (){
     Network,
     AuthService,
     UserService,
-    RepairService
+    RepairService,
+    RepairRecordService
   ]
 })
 export class AppModule {}

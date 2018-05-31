@@ -1,18 +1,10 @@
 import {AfterViewInit, Component} from '@angular/core';
 import {Events, InfiniteScroll, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {UIMessageService} from "../../common/service/ui-message";
 import {Repair, RepairCriteria} from "../../common/model/Repair";
 import {RepairDetailPage} from "./repair.detail";
 import {UserService} from "../../common/service/userService";
 import {RepairService} from "../../common/service/repairService";
 import {RepairCreatePage} from "./repair.create";
-
-/**
- * Generated class for the RiskCategoryListTestPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -27,7 +19,6 @@ export class RepairListPage implements AfterViewInit{
   show: boolean;
   constructor(public navCtrl: NavController,
               public events : Events,
-              private _messageService: UIMessageService,
               private userService: UserService,
               private repairService: RepairService,
               private navParams: NavParams) {
@@ -61,9 +52,6 @@ export class RepairListPage implements AfterViewInit{
   JumpToCreateRepair() {
     this.navCtrl.push(RepairCreatePage);
   }
-  getUserListByRole() {
-    this.userService.getUserListByRole(2).subscribe(res=> console.log("res======", JSON.stringify(res)))
-  }
   search() {
     this.getRepairList();
   }
@@ -74,15 +62,6 @@ export class RepairListPage implements AfterViewInit{
     })
   }
   refreshRepairList(){
-
-      // if (this.criteria.page == 1){
-      //   if (this.lastScroll)
-      //     this.lastScroll.enable(true)
-      //   this.valuesForRiskCommonIssueList = res.result
-      //   this.totalRecords = res.totalRecords
-      // }else{
-      //   this.valuesForRiskCommonIssueList = this.valuesForRiskCommonIssueList.concat(res.result)
-      // }
     this.lastScroll.enable(true)
     this.repairService.getRepairList(this.repairCriteria).subscribe(res=> {
       this.repairList = this.repairList.concat(res.result.content);
