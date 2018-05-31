@@ -20,7 +20,7 @@ export class RepairService extends BaseService {
         return this.http.post(this.getServiceUrl() + '/repair/querylist?page=' + repairCriteria.skip, JSON.stringify
             (repairCriteria), this.getJsonHeaderWithJWT()).map(res => res.json()).catch(this.handleError);
     }
-    create(userId: number, repair: Repair) {
+    create(userId: string, repair: Repair) {
         return this.http.post(this.getServiceUrl() + '/repair/create?userId=' + userId , JSON.stringify(repair),
             this.getJsonHeaderWithJWT()).map(res => res.json()).catch(this.handleError)
     }

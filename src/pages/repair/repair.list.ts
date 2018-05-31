@@ -1,7 +1,6 @@
 import {AfterViewInit, Component} from '@angular/core';
-import {AlertController, Events, InfiniteScroll, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Events, InfiniteScroll, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {UIMessageService} from "../../common/service/ui-message";
-import {Observable, Subject} from "rxjs";
 import {Repair, RepairCriteria} from "../../common/model/Repair";
 import {RepairDetailPage} from "./repair.detail";
 import {UserService} from "../../common/service/userService";
@@ -22,18 +21,25 @@ import {RepairCreatePage} from "./repair.create";
 })
 export class RepairListPage implements AfterViewInit{
   repairList: Array<Repair>;
-  repairCriteria:RepairCriteria = new RepairCriteria();
+  repairCriteria: RepairCriteria = new RepairCriteria();
   totalRecords: number;
   lastScroll : InfiniteScroll;
+  show: boolean;
   constructor(public navCtrl: NavController,
-              public alertCtrl: AlertController,
               public events : Events,
               private _messageService: UIMessageService,
               private userService: UserService,
-              private repairService: RepairService) {
-    if(JSON.parse(localStorage.getItem('sno'))){
-      this.repairCriteria.sno = JSON.parse(localStorage.getItem('sno'));
-    }
+              private repairService: RepairService,
+              private navParams: NavParams) {
+      this.repairCriteria.sno = localStorage.getItem('sno');
+      if(navParams.data){
+        this.repairCriteria.isEvaluate = navParams.data.isEvaluate;
+        if(this.repairCriteria.isEvaluate === 'y'){
+          this.show = false;
+        }else {
+          this.show = true;
+        }
+      }
   }
 
   // ionViewDidLoad() {
@@ -58,8 +64,10 @@ export class RepairListPage implements AfterViewInit{
   getUserListByRole() {
     this.userService.getUserListByRole(2).subscribe(res=> console.log("res======", JSON.stringify(res)))
   }
+  search() {
+    this.getRepairList();
+  }
   getRepairList() {
-    // this.repairCriteria.sno = "666";
     this.repairService.getRepairList(this.repairCriteria).subscribe(res=> {
       this.repairList = res.result.content
       this.totalRecords = res.result.totalElements
@@ -89,5 +97,20 @@ export class RepairListPage implements AfterViewInit{
     }else{
       infiniteScroll.enable(false)
     }
+  }
+  setColor(repair: Repair): string {
+    let color = '';
+    if (repair.repair_status === 0) {
+      color = 'red'
+    }else if (repair.repair_status === 2) {
+      color = 'green'
+    }else if (repair.repair_status === 3 && repair.isEvaluate === 'n') {
+      color = 'blue'
+    }else if (repair.repair_status === 4 && repair.isEvaluate === 'n') {
+      color = 'blue'
+    }else {
+      color = 'black'
+    }
+    return color;
   }
 }

@@ -13,10 +13,10 @@ import {RepairListPage} from "./repair.list";
 })
 export class RepairCreatePage{
     repair: Repair = new Repair();
-    sno:number;
+    sno:string;
     constructor(public nav: NavController, private repairService: RepairService,
                 private messageService: UIMessageService) {
-        this.sno = JSON.parse(localStorage.getItem('sno'));
+        this.sno = localStorage.getItem('sno');
     }
     createRepair() {
         if (!this.repair.content) {

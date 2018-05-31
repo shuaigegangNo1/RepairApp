@@ -1,11 +1,59 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      关于
+      个人信息
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
 
+<ion-content>
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon name="ios-contact-outline" class="company-about"></ion-icon>
+        </ion-avatar>
+        姓名
+        <div item-content item-end>
+          {{user.name}}
+        </div>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon name="ios-person-outline" class="company-about"></ion-icon>
+        </ion-avatar>
+        账号
+        <div item-content item-end>
+          {{user.sno}}
+        </div>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon name="ios-time" class="company-about"></ion-icon>
+        </ion-avatar>
+        职业
+        <div item-content item-end>
+          {{user.role}}
+        </div>
+      </ion-item>
+
+    </ion-item-sliding>
+    <ion-item-sliding>
+      <button ion-item>
+        <ion-avatar item-start>
+          <ion-icon name="ios-call-outline" class="company-about"></ion-icon>
+        </ion-avatar>
+        联系方式
+        <div item-content item-end>
+          {{user.email}}
+        </div>
+      </button>
+    </ion-item-sliding>
+  </ion-list>
+  <button ion-button full color="danger" (click)="logout()">退出</button>
 </ion-content>

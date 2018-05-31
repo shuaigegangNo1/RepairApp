@@ -6,5 +6,6 @@ export class User extends BaseModule {
     name: string;
     password: string;
     profession:string;
+    email: string;
 }
 

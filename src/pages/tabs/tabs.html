@@ -1,4 +1,5 @@
 <ion-tabs>
-  <ion-tab [root]="RepairRoot" tabTitle="我的报修" tabIcon="flame"></ion-tab>
-  <ion-tab [root]="aboutRoot" tabTitle="关于" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="RepairRoot" tabTitle="我的报修" [rootParams]="repairParams" tabIcon="ios-medkit-outline"></ion-tab>
+  <ion-tab [root]="RepairRoot" tabTitle="历史报修" [rootParams]="hRepairParams" tabIcon="ios-list-box-outline"></ion-tab>
+  <ion-tab [root]="aboutRoot" tabTitle="个人信息" tabIcon="information-circle"></ion-tab>
 </ion-tabs>

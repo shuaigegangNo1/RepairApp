@@ -13,7 +13,12 @@ export class TabsPage {
   aboutRoot = AboutPage;
   RepairRoot = RepairListPage;
   isAdmin : Boolean;
-
+  repairParams = {
+    isEvaluate: 'n',
+  };
+  hRepairParams = {
+    isEvaluate: 'y',
+  };
   constructor(private auth: AuthService, public events : Events) {
       this.initPage()
   }

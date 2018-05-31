@@ -5,10 +5,10 @@
         <ion-icon name="md-add"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>我的报修</ion-title>
+    <ion-title>{{show? '我的报修':'历史报修'}}</ion-title>
     <!--gi.refresh();-->
     <ion-buttons end>
-      <button ion-button (click)= " refreshRiskCategoryList(); " >
+      <button ion-button (click)= " getRepairList()" >
         <ion-icon name="refresh-circle"></ion-icon>
       </button>
     </ion-buttons>
@@ -19,11 +19,14 @@
 
   <!--<ion-searchbar (ionInput)="search($event)"-->
                  <!--&gt;</ion-searchbar>-->
+  <ion-searchbar [(ngModel)]="repairCriteria.content" (ionChange)="search()"  placeholder="搜索报修内容"></ion-searchbar>
         <ion-list>
           <button ion-item *ngFor="let repair of repairList" (click)="goToRepairDetail(repair)">
-            <div [ngStyle]="{'color':repair.isAlarmed?'red':'#488aff'}">报修单号：{{ repair.id }}</div>
+            <div >报修单号：<span [ngStyle]="{'color':repair.isAlarmed?'red':'#488aff'}">{{ repair.id }}</span></div>
             <p>报修时间：{{repair.create_time |date: 'yyyy-MM-dd HH:mm:ss'}}</p>
-            <p>报修状态：{{repair.repair_status | repairStatus}}</p>
+           <p> 报修状态：
+             <span [ngStyle]="{'color':setColor(repair)}">{{repair.isEvaluate === 'n'&& repair.repair_status===4? '待评价': repair.isEvaluate === 'y'? '已完成':repair?.repair_status | repairStatus}}</span>
+           </p>
             <p>报修内容：{{repair.content}}</p>
           </button>
         </ion-list>
