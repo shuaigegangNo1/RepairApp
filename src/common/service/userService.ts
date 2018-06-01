@@ -5,6 +5,7 @@ import {Injectable} from "@angular/core";
 import {DOMAIN_SERVER_URL, USER_URL} from "../constants";
 import {BaseService} from "./baseService";
 import {Http} from "@angular/http";
+import {User} from "../model/User";
 @Injectable()
 export class UserService extends BaseService{
     constructor(private http: Http) {
@@ -33,4 +34,8 @@ export class UserService extends BaseService{
       res => res.json()
     ).catch(this.handleError)
   }
+    update(user: any) {
+        return this.http.post(this.getServiceUrl() + '/update', JSON.stringify(user), this.getJsonHeaderWithJWT())
+            .map(res => res.json()).catch(this.handleError)
+    }
 }

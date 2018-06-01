@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-title>
       个人信息
     </ion-title>
@@ -44,7 +44,7 @@
 
     </ion-item-sliding>
     <ion-item-sliding>
-      <button ion-item>
+      <button ion-item (click)="jumpToUpdateUser()">
         <ion-avatar item-start>
           <ion-icon name="ios-call-outline" class="company-about"></ion-icon>
         </ion-avatar>

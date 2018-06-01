@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            个人信息更新
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <!--<ion-item-sliding>-->
+            <!--<button ion-item>-->
+                <!--<ion-avatar item-start>-->
+                    <!--<ion-icon name="ios-call-outline" class="company-about"></ion-icon>-->
+                <!--</ion-avatar>-->
+                <!--联系方式-->
+                <!--<div item-content item-end>-->
+                    <!--{{user.email}}-->
+                <!--</div>-->
+            <!--</button>-->
+        <!--</ion-item-sliding>-->
+        <ion-item>
+            <ion-label color="primary" fixed>联系方式</ion-label>
+            <ion-input type="tel" placeholder="请输入联系方式" [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+    </ion-list>
+    <button ion-button full  (click)="updateUser()">更新</button>
+</ion-content>

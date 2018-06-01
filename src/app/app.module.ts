@@ -28,6 +28,7 @@ import {RepairService} from "../common/service/repairService";
 import {AuthService} from "../common/service/AuthService";
 import {PipesModule} from "../common/pipe/pipe.module";
 import {RepairRecordService} from "../common/service/repairRecordService";
+import {AboutUpdatePage} from "../pages/about/about.update";
 export function getAuthHttp (http : Http, storage: Storage, message: UIMessageService, events: Events) {
   return new CustomAuthHttp(new AuthConfig({
     headerPrefix: "Bearer ",
@@ -46,7 +47,8 @@ export function getEnv (){
     WindbellApp,
     AboutPage,
     TabsPage,
-    loginPage
+    loginPage,
+    AboutUpdatePage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ export function getEnv (){
     WindbellApp,
     AboutPage,
     TabsPage,
-    loginPage
+    loginPage,
+    AboutUpdatePage
   ],
   providers: [
     StatusBar,

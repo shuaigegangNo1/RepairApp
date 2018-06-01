@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {loginPage} from "../login/login";
 import {UserService} from "../../common/service/userService";
 import {User} from "../../common/model/User";
+import {AboutUpdatePage} from "./about.update";
 
 @Component({
   selector: 'page-about',
@@ -22,5 +23,8 @@ export class AboutPage {
     localStorage.removeItem('token');
     localStorage.removeItem('sno');
     this.navCtrl.push(loginPage)
+  }
+  jumpToUpdateUser() {
+    this.navCtrl.push(AboutUpdatePage,{user: this.user})
   }
 }
