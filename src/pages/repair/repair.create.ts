@@ -9,6 +9,7 @@ import {UIMessageService} from "../../common/service/ui-message";
 import {RepairListPage} from "./repair.list";
 import {DomSanitizer} from "@angular/platform-browser";
 import {FileService} from "../../common/service/fileService";
+import {IMAGE_SIZE} from "../../common/constants";
 @Component({
     selector: 'repair-create-page',
     templateUrl: 'repair.create.html'
@@ -23,8 +24,13 @@ export class RepairCreatePage{
                 private messageService: UIMessageService, private sanitizer: DomSanitizer,
                 private fileService: FileService) {
         this.sno = localStorage.getItem('sno');
+        this.imageUrl = "assets/imgs/default.jpeg"
     }
     createRepair() {
+        if(this.files[0].size > IMAGE_SIZE) {
+            this.messageService.success('图片大小不能超过5M');
+            return;
+        }
         this.repair.repair_status = 0;
         this.repairService.create(this.sno, this.repair).subscribe(
             res => {
@@ -32,6 +38,7 @@ export class RepairCreatePage{
                 this.nav.push(RepairListPage);
             }
         )
+        this.uploadImage();
     }
     selectedFileOnChanged(event:any) {
         this.currFile = event.currentTarget.files[0];
@@ -48,7 +55,7 @@ export class RepairCreatePage{
                 // this.course.equipment = res.filenames[1] ? res.filenames[1] : "";
             }
         ).then(() => {
-                console.log(">>>>Upload Image Success>>>>>>")
+                console.log(">>>>Upload Image Success>>>>")
                 // this.createAttachment();
             }
         );
