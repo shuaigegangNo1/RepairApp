@@ -5,28 +5,30 @@ import {RepairDetailPage} from "./repair.detail";
 import {PipesModule} from "../../common/pipe/pipe.module";
 import {RepairCreatePage} from "./repair.create";
 import {RepairRecordListPage} from "./repair.record.list";
+import {IonicImageViewerModule} from "ionic-img-viewer";
 
 @NgModule({
   declarations: [
     RepairListPage,
     RepairDetailPage,
     RepairCreatePage,
-    RepairRecordListPage
+    RepairRecordListPage,
   ],
   imports: [
     IonicPageModule.forChild(RepairListPage),
-    PipesModule
+    PipesModule,
+    IonicImageViewerModule
   ],
   exports: [
     RepairListPage,
     RepairDetailPage,
     RepairCreatePage,
-    RepairRecordListPage
+    RepairRecordListPage,
   ],
   entryComponents: [
     RepairDetailPage,
     RepairCreatePage,
-    RepairRecordListPage
+    RepairRecordListPage,
 
   ]
 })

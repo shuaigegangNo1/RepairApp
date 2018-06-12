@@ -37,9 +37,32 @@
                 <ion-label floating> 联系方式<span style="color:red; font-size: 20px;">*</span></ion-label>
                 <ion-input type="text" [(ngModel)]="repair.telephone"></ion-input>
             </ion-item>
+            <!--<ion-item>-->
+                <!--<ion-label fixed> 上传照片<span style="color:red; font-size: 20px;">*</span></ion-label>-->
+                <!--<div item-end>-->
+                    <!--<file-upload ></file-upload>-->
+                <!--</div>-->
+
+            <!--</ion-item>-->
+            <ion-item>
+                <img [src]="imageUrl"  imageViewer="imageUrl" width="60px" height="60px">
+                <div class="file-input">
+                    <p class="input-container">
+                        上传图片
+                        <input type="file" id="upload" name="upload"
+                               (change)="selectedFileOnChanged($event)" accept="image/*" multiple/>
+                    </p>
+                    <span id="name"></span>
+                </div>
+            </ion-item>
+            <div padding-top>
+                <button type="button" ion-button block (click)="uploadImage()">提交照片</button>
+            </div>
+
         </ion-list>
-        <div padding>
-            <button ion-button full (click)="createRepair()">提交</button>
+        <div padding-top>
+            <button ion-button full (click)="createRepair()" *ngIf="repair.content&&repair.area&&repair.address&&repair.telephone">提交</button>
+            <button ion-button full disabled *ngIf="!repair.content||!repair.area||!repair.address||!repair.telephone">提交</button>
         </div>
     </div>
 </ion-content>

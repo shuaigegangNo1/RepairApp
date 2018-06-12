@@ -29,6 +29,8 @@ import {AuthService} from "../common/service/AuthService";
 import {PipesModule} from "../common/pipe/pipe.module";
 import {RepairRecordService} from "../common/service/repairRecordService";
 import {AboutUpdatePage} from "../pages/about/about.update";
+import {FileService} from "../common/service/fileService";
+import {FileTransfer} from "@ionic-native/file-transfer";
 export function getAuthHttp (http : Http, storage: Storage, message: UIMessageService, events: Events) {
   return new CustomAuthHttp(new AuthConfig({
     headerPrefix: "Bearer ",
@@ -91,7 +93,9 @@ export function getEnv (){
     AuthService,
     UserService,
     RepairService,
-    RepairRecordService
+    RepairRecordService,
+    FileService,
+    FileTransfer
   ]
 })
 export class AppModule {}

@@ -1,0 +1,26 @@
+.file-input{
+  line-height:30px;
+  position:relative;
+  margin-top:10px;
+}
+.file-input .input-container{
+  width:68px;
+  height:22px;
+  text-align:center;
+  background:#3879d9;
+  color:#fff;
+  border-radius:3px;
+}
+.file-input input{
+  position:absolute;
+  left:0;
+  top:0;
+  opacity:0;
+}
+.file-input #name{
+  position:absolute;
+  left:100px;
+  top:0;
+  font-size:12px;
+  color:#666;
+}
