@@ -1,5 +1,5 @@
 // export const url: string = 'http://localhost:8090';
-export const url: string = 'http://211.70.121.60:8090';
+export const url: string = 'http://211.70.121.60:8090/czili';
 export const PAGESIZE: number = 20;
 
 export const FILE_DOWNLOAD_URL = url + "/resources/upload";
