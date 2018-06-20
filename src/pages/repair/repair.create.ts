@@ -9,7 +9,8 @@ import {UIMessageService} from "../../common/service/ui-message";
 import {RepairListPage} from "./repair.list";
 import {DomSanitizer} from "@angular/platform-browser";
 import {FileService} from "../../common/service/fileService";
-import {IMAGE_SIZE} from "../../common/constants";
+import {FILE_PATH, IMAGE_SIZE} from "../../common/constants";
+import {Attachment} from "../../common/model/Attachment";
 @Component({
     selector: 'repair-create-page',
     templateUrl: 'repair.create.html'
@@ -20,20 +21,35 @@ export class RepairCreatePage{
     imageUrl: any;
     currFile: File;
     files: Array<File>;
+    count: number;
+    attachment: Attachment = new Attachment();
     constructor(public nav: NavController, private repairService: RepairService,
                 private messageService: UIMessageService, private sanitizer: DomSanitizer,
                 private fileService: FileService) {
         this.sno = localStorage.getItem('sno');
         this.imageUrl = "assets/imgs/default.jpeg"
+        this.initCount();
+    }
+    initCount() {
+        console.log(">>>res>> initCount")
+        this.repairService.pushRepairCount(3);
+        // this.repairService.messages$.subscribe(count=> console.log(">>>res>>666669999", count))
+
     }
     createRepair() {
+        if(!this.files) {
+            this.messageService.success('请上传图片');
+            return;
+        }
         if(this.files[0].size > IMAGE_SIZE) {
             this.messageService.success('图片大小不能超过5M');
             return;
         }
+        this.repair.code = new Date().getTime().toString().slice(5,13);
         this.repair.repair_status = 0;
         this.repairService.create(this.sno, this.repair).subscribe(
             res => {
+                this.createAttachment();
                 this.messageService.success('报修申报成功');
                 this.nav.push(RepairListPage);
             }
@@ -42,6 +58,9 @@ export class RepairCreatePage{
     }
     selectedFileOnChanged(event:any) {
         this.currFile = event.currentTarget.files[0];
+        this.attachment.fileName = this.currFile.name.split('.')[0];
+        this.attachment.filePath = FILE_PATH;
+        this.attachment.fileFormat = this.currFile.name.split('.')[1];
         this.files = event.target.files;
         this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(this.currFile));
         this.files = event.target.files;
@@ -51,13 +70,17 @@ export class RepairCreatePage{
         this.fileService.handlerFileUpload(this.files).then(
             res => {
                 // TODO this is ugly
-                // this.course.equipment = res.filenames[0] ? res.filenames[0] : "";
-                // this.course.equipment = res.filenames[1] ? res.filenames[1] : "";
             }
         ).then(() => {
                 console.log(">>>>Upload Image Success>>>>")
-                // this.createAttachment();
+
             }
         );
     }
+    createAttachment(){
+        this.fileService.create(this.repair.code, this.attachment).subscribe(res=> {
+            console.log(">>>>create Attachment>>>>");
+        })
+    }
+
 }

@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AuthHttp } from 'angular2-jwt'
-import {UPLOAD_IMAGE_URL} from "../constants";
+import {DOMAIN_SERVER_URL, UPLOAD_IMAGE_URL} from "../constants";
+import {Attachment, AttachmentCriteria} from "../model/Attachment";
+import {BaseService} from "./baseService";
+import {Http} from "@angular/http";
 
 @Injectable()
-export class FileService {
+export class FileService extends BaseService{
 
   protected _fileMultiUploadUrl: string = UPLOAD_IMAGE_URL;
-  constructor(public http: AuthHttp) {}
+  constructor( private http: Http) {
+    super()
+  }
 
-
+  getServiceUrl() {
+    return DOMAIN_SERVER_URL;
+  }
   handlerFileUpload(filesToUpload: Array<File>): Promise<any> {
     return this.makeFileRequest(this._fileMultiUploadUrl, filesToUpload);
   }
@@ -36,4 +43,12 @@ export class FileService {
     });
   }
 
+  create(repairCode: string, attachment: Attachment) {
+    return this.http.post(this.getServiceUrl() + '/attachment/create?code=' + repairCode , JSON.stringify(attachment),
+        this.getJsonHeaderWithJWT()).map(res => res.json()).catch(this.handleError);
+  }
+  getAttachmentList(attachmentCriteria: AttachmentCriteria) {
+    return this.http.post(this.getServiceUrl() + '/attachment/queryList?page=' + attachmentCriteria.skip, JSON.stringify
+    (attachmentCriteria), this.getJsonHeaderWithJWT()).map(res => res.json()).catch(this.handleError);
+  }
 }

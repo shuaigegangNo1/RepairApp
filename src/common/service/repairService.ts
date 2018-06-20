@@ -6,11 +6,16 @@ import {Http} from '@angular/http';
 import {BaseService} from './baseService';
 import {Repair, RepairCriteria} from "../model/Repair";
 import {DOMAIN_SERVER_URL} from "../constants";
+import {Subject} from "rxjs/Subject";
 @Injectable()
 export class RepairService extends BaseService {
-
+    private repairSource = new Subject<any>();
+    messages$ = this.repairSource.asObservable();
     constructor(private http: Http) {
         super()
+    }
+    pushRepairCount(count: any) {
+        this.repairSource.next(count);
     }
     getServiceUrl() {
         return DOMAIN_SERVER_URL;

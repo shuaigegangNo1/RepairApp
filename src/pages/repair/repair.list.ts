@@ -2,7 +2,6 @@ import {AfterViewInit, Component} from '@angular/core';
 import {Events, InfiniteScroll, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Repair, RepairCriteria} from "../../common/model/Repair";
 import {RepairDetailPage} from "./repair.detail";
-import {UserService} from "../../common/service/userService";
 import {RepairService} from "../../common/service/repairService";
 import {RepairCreatePage} from "./repair.create";
 
@@ -19,7 +18,6 @@ export class RepairListPage implements AfterViewInit{
   show: boolean;
   constructor(public navCtrl: NavController,
               public events : Events,
-              private userService: UserService,
               private repairService: RepairService,
               private navParams: NavParams) {
       this.repairCriteria.sno = localStorage.getItem('sno');
@@ -41,9 +39,12 @@ export class RepairListPage implements AfterViewInit{
 
   ngAfterViewInit() {
     this.getRepairList();
-
+    this.getCount();
   }
-
+  getCount() {
+    console.log(">>>>enter>>>>> getCount")
+    this.repairService.messages$.subscribe(count=> console.log(">>>res>>666669999", count))
+  }
   goToRepairDetail(repair) {
     this.navCtrl.push(RepairDetailPage, {
       repair: repair,
