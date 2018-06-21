@@ -16,7 +16,7 @@ export class UIMessageService {
 
   info(message: string): void{
     this.toastCtrl.create({
-      message: message,
+      message: "提示: "+message,
       duration: 2000,
       position: 'middle'
     }).present()
