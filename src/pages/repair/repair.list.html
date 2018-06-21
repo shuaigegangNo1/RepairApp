@@ -22,7 +22,7 @@
   <ion-searchbar [(ngModel)]="repairCriteria.content" (ionChange)="search()"  placeholder="搜索报修内容"></ion-searchbar>
         <ion-list>
           <button ion-item *ngFor="let repair of repairList" (click)="goToRepairDetail(repair)">
-            <div >报修单号：<span style ="color:#488aff">{{ repair.id }}</span></div>
+            <div >报修单号：<span style ="color:#488aff">{{ repair.code }}</span></div>
             <p>报修时间：{{repair.create_time |date: 'yyyy-MM-dd HH:mm:ss'}}</p>
            <p> 报修状态：
              <span [ngStyle]="{'color':setColor(repair)}">{{repair.isEvaluate === 'n'&& repair.repair_status===4? '待评价': repair.isEvaluate === 'y'? '已完成':repair?.repair_status | repairStatus}}</span>

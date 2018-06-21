@@ -38,11 +38,11 @@ export class RepairCreatePage{
     }
     createRepair() {
         if(!this.files) {
-            this.messageService.success('请上传图片');
+            this.messageService.info('请上传图片');
             return;
         }
         if(this.files[0].size > IMAGE_SIZE) {
-            this.messageService.success('图片大小不能超过5M');
+            this.messageService.info('图片大小不能超过5M');
             return;
         }
         this.repair.code = new Date().getTime().toString().slice(5,13);
