@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { ToastController } from 'ionic-angular';
-import { UIMessage, UIMessageType } from '../model/ui-message'
-import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UIMessageService {
 
-  //private messageStream = new Subject<string>();
   constructor(
     public toastCtrl: ToastController
   ) {

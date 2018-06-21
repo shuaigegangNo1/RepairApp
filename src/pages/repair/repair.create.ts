@@ -5,7 +5,7 @@ import {Component} from "@angular/core";
 import {NavController} from "ionic-angular";
 import {RepairService} from "../../common/service/repairService";
 import {Repair} from "../../common/model/Repair";
-import {UIMessageService} from "../../common/service/ui-message";
+import {UIMessageService} from "../../common/service/UIMessage";
 import {RepairListPage} from "./repair.list";
 import {DomSanitizer} from "@angular/platform-browser";
 import {FileService} from "../../common/service/fileService";

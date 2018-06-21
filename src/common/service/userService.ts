@@ -5,7 +5,6 @@ import {Injectable} from "@angular/core";
 import {DOMAIN_SERVER_URL, USER_URL} from "../constants";
 import {BaseService} from "./baseService";
 import {Http} from "@angular/http";
-import {User} from "../model/User";
 @Injectable()
 export class UserService extends BaseService{
     constructor(private http: Http) {
