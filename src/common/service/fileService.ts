@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AuthHttp } from 'angular2-jwt'
 import {DOMAIN_SERVER_URL, UPLOAD_IMAGE_URL} from "../constants";
 import {Attachment, AttachmentCriteria} from "../model/Attachment";
 import {BaseService} from "./baseService";

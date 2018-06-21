@@ -3,7 +3,7 @@ import { Events } from 'ionic-angular';
 import { AuthHttp, AuthConfig, AuthHttpError } from 'angular2-jwt'
 import { Observable } from "rxjs/Observable";
 import { RestResult } from '../model/rest-result'
-import { UIMessageService } from '../service/ui-message'
+import { UIMessageService } from './UIMessage'
 import 'rxjs/Rx';
 
 export class CustomAuthHttp extends AuthHttp{

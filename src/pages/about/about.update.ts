@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {UserService} from "../../common/service/userService";
 import {User} from "../../common/model/User";
-import {UIMessageService} from "../../common/service/ui-message";
+import {UIMessageService} from "../../common/service/UIMessage";
 import {AboutPage} from "./about";
 
 @Component({

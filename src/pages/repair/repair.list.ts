@@ -1,5 +1,5 @@
 import {AfterViewInit, Component} from '@angular/core';
-import {Events, InfiniteScroll, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {InfiniteScroll, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Repair, RepairCriteria} from "../../common/model/Repair";
 import {RepairDetailPage} from "./repair.detail";
 import {RepairService} from "../../common/service/repairService";
@@ -17,7 +17,6 @@ export class RepairListPage implements AfterViewInit{
   lastScroll : InfiniteScroll;
   show: boolean;
   constructor(public navCtrl: NavController,
-              public events : Events,
               private repairService: RepairService,
               private navParams: NavParams) {
       this.repairCriteria.sno = localStorage.getItem('sno');

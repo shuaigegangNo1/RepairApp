@@ -1,6 +1,5 @@
 import {AfterViewInit, Component} from '@angular/core';
-import {Events, NavController, NavParams} from 'ionic-angular';
-import {UIMessageService} from "../../common/service/ui-message";
+import {NavController, NavParams} from 'ionic-angular';
 import {RepairRecord, RepairRecordCriteria} from "../../common/model/RepairRecord";
 import {RepairRecordService} from "../../common/service/repairRecordService";
 
@@ -13,7 +12,6 @@ export class RepairRecordListPage implements AfterViewInit{
   repairRecordCriteria: RepairRecordCriteria = new RepairRecordCriteria();
   show: boolean;
   constructor(public navCtrl: NavController,
-              public events : Events,
               private repairRecordService: RepairRecordService,
               private navParams: NavParams) {
       this.repairRecordCriteria.id = this.navParams.get('repairId');
