@@ -10,7 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {DatePicker} from '@ionic-native/date-picker';
 import {Environment} from "../environments/environment";
-import {UIMessageService} from "../common/service/ui-message";
+import {UIMessageService} from "../common/service/UIMessage";
 import {Http} from "@angular/http";
 import {AuthConfig, AuthHttp} from "angular2-jwt";
 import {CustomAuthHttp} from "../common/service/CustomAuthHttp";
