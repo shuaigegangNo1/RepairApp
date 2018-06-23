@@ -31,9 +31,10 @@ export class RepairDetailPage  {
     }
     this.repair.isEvaluate = 'y';
     this.repairService.update(this.repair).subscribe(res => {
-      console.log(">>>res>>", res.result);
       this.messageService.success('评价成功');
-      this.navCtrl.push(RepairListPage);
+      this.navCtrl.push(RepairListPage,{
+        isEvaluate: 'n',
+      });
     })
   }
   jumpRepairRecord() {

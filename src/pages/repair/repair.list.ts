@@ -28,6 +28,9 @@ export class RepairListPage implements AfterViewInit{
           this.show = true;
         }
       }
+    if (navParams.get('isEvaluate')){
+      this.repairCriteria.isEvaluate = navParams.get('isEvaluate');
+    }
   }
 
   // ionViewDidLoad() {
@@ -37,6 +40,7 @@ export class RepairListPage implements AfterViewInit{
 
 
   ngAfterViewInit() {
+    console.log(">>>enter ngAfterViewInit>>>")
     this.getRepairList();
     this.getCount();
   }

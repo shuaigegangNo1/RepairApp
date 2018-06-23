@@ -51,7 +51,9 @@ export class RepairCreatePage{
             res => {
                 this.createAttachment();
                 this.messageService.success('报修申报成功');
-                this.nav.push(RepairListPage);
+                this.nav.push(RepairListPage,{
+                    isEvaluate: 'n',
+                });
             }
         )
         this.uploadImage();
