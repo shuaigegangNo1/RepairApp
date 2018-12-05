@@ -10,19 +10,19 @@ import {AuthService} from "../../common/service/AuthService";
   templateUrl: 'login.html'
 })
 export class loginPage{
-  user = { name: '', password: '' };
+  user = { name: '', password: '123456' };
   constructor(public nav: NavController, public auth: AuthService, public alertCtrl: AlertController) { }
   public login() {
     this.auth.login(this.user).subscribe(allowed => {
         if (allowed) {
           this.nav.push(TabsPage);
         } else {
-          this.showError("用户名/密码不正确");
+          this.showError("工号/学号不正确");
         }
       },
       error => {
         if (error.status==401){
-          this.showError("用户名/密码不正确");
+          this.showError("工号/学号不正确");
         }else{
           this.showError("网络未连接");
         }
@@ -42,6 +42,6 @@ export class loginPage{
       title: text,
       buttons: ['确认']
     });
-    alert.present(prompt);
+    alert.present();
   }
 }
