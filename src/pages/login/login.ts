@@ -13,6 +13,10 @@ export class loginPage{
   user = { name: '', password: '123456' };
   constructor(public nav: NavController, public auth: AuthService, public alertCtrl: AlertController) { }
   public login() {
+    if(this.user.name===''){
+      this.showError("未输入工号/学号");
+      return;
+    }
     this.auth.login(this.user).subscribe(allowed => {
         if (allowed) {
           this.nav.push(TabsPage);
